@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daniel Reiss — Creative leadership, technology, editorial strategy. Effing the Ineffable Since 2001.">
+
+<!-- Open Graph / Link Preview (SMS, iMessage, Slack, social, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://danielreiss.com/">
+<meta property="og:title" content="Daniel Reiss — Effing the Ineffable Since 2001">
+<meta property="og:description" content="Creative leadership. Technology. Editorial strategy. For the interesting people doing the interesting work.">
+<meta property="og:image" content="https://danielreiss.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daniel Reiss — Effing the Ineffable Since 2001">
+<meta name="twitter:description" content="Creative leadership. Technology. Editorial strategy.">
+<meta name="twitter:image" content="https://danielreiss.com/images/og-image.jpg">
+
+<title>Daniel Reiss — Effing the Ineffable Since 2001</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EBE4D6;
+    --ink: #1A1A18;
+    --ink-light: #3A3A36;
+    --orange: #D4622A;
+    --warm-gray: #8A847A;
+    --rule: #C8C0B2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+  .section-rule { width: 60px; height: 2px; background: var(--orange); border: none; margin: 4rem auto; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
+
+  .hero-photo {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    object-fit: cover; object-position: center 20%;
+    margin-bottom: 2rem;
+    border: 3px solid var(--cream-dark);
+    box-shadow: 0 4px 24px rgba(26,26,24,0.1);
+    filter: saturate(0.85) contrast(1.05);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    letter-spacing: 0.08em; line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300; font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    color: var(--orange); letter-spacing: 0.02em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-descriptor {
+    font-size: 1.05rem; font-weight: 400;
+    color: var(--warm-gray); max-width: 580px; line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+
+  .desc-x {
+    font-weight: 600;
+    color: var(--orange);
+    margin: 0 0.15em;
+    font-size: 0.85em;
+  }
+
+  .hero-entity {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-comma {
+    color: var(--orange);
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--rule);
+    animation: drift 2.5s ease-in-out infinite;
+    line-height: 1;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* MARQUEE */
+  .marquee-section {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .marquee-track {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 2.5rem 3rem; padding: 0 2rem;
+  }
+
+  .marquee-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.15em;
+    color: var(--ink-light); opacity: 0.4;
+    text-transform: uppercase; white-space: nowrap;
+    transition: opacity 0.3s ease;
+  }
+  .marquee-logo:hover { opacity: 0.75; }
+
+  .marquee-divider { width: 1px; height: 18px; background: var(--rule); opacity: 0.5; }
+
+  .award-strip {
+    display: flex; justify-content: center; align-items: center;
+    gap: 3rem; margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .award-logo {
+    height: 45px; opacity: 0.35;
+    filter: grayscale(100%);
+    transition: opacity 0.3s ease;
+  }
+
+  .award-logo.tall {
+    height: 90px;
+  }
+
+  .award-logo:hover { opacity: 0.7; }
+
+  .marquee-logo.award {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: 0.8rem; letter-spacing: 0.05em;
+    text-transform: none;
+  }
+
+  /* HBR QUOTE */
+  .hbr-quote {
+    margin: 3.5rem 0 0;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .hbr-sidebar {
+    float: right;
+    margin: 0.25rem 0 1rem 1.5rem;
+    width: 180px;
+    text-align: center;
+    padding: 1rem;
+    border-left: 2px solid var(--orange);
+  }
+
+  .hbr-sidebar .hbr-blockquote {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    margin: 0;
+    max-width: none;
+  }
+
+  .hbr-sidebar .hbr-logo {
+    height: 50px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .hbr-sidebar { float: none; width: 100%; margin: 0 0 1rem 0; border-left: none; border-bottom: 2px solid var(--orange); padding: 0 0 1rem 0; }
+  }
+
+  .hbr-logo {
+    height: 70px; opacity: 0.5;
+    filter: grayscale(100%);
+    margin-bottom: 1.25rem;
+  }
+
+  .hbr-blockquote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500; font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--ink);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+    border: none; padding: 0;
+  }
+
+  .hbr-source {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 0.75rem;
+  }
+
+  /* STORIES */
+  .stories { padding: 5rem 0; }
+  .story { margin-bottom: 4rem; }
+  .story:last-child { margin-bottom: 0; }
+
+  .story-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+
+  .story-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    line-height: 1.35; margin-bottom: 1rem;
+  }
+
+  .story-body {
+    font-size: 1rem; color: var(--ink-light);
+    max-width: 680px; line-height: 1.75;
+  }
+  .story-body em { font-style: italic; color: var(--ink); }
+  .story-aside { font-size: 0.85rem; color: var(--warm-gray); font-style: italic; margin-top: 0.75rem; }
+
+  .video-embed {
+    margin-top: 1.5rem; max-width: 680px;
+    aspect-ratio: 16 / 9;
+  }
+  .video-embed iframe { width: 100%; height: 100%; border: none; border-radius: 4px; }
+
+  /* MIC DROP */
+  .micdrop {
+    padding: 4.5rem 0; text-align: center;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .micdrop-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 2rem;
+  }
+
+  .micdrop-list {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300; font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--ink-light); line-height: 2.2;
+  }
+  .micdrop-list .name { display: inline; white-space: nowrap; }
+  .micdrop-list .sep { display: inline-block; width: 1.5rem; text-align: center; color: var(--rule); font-style: normal; }
+
+  /* HUMAN */
+  .human { padding: 5rem 0; }
+
+  .human-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 1rem;
+  }
+
+  .human-body { font-size: 1rem; color: var(--ink-light); max-width: 680px; line-height: 1.75; }
+
+  .human-list { margin-top: 1.25rem; font-size: 1rem; color: var(--ink-light); line-height: 2; max-width: 680px; }
+  .human-list span { display: block; }
+  .human-list .hl-place { font-weight: 500; color: var(--ink); }
+  .human-list .hl-note { font-style: italic; color: var(--warm-gray); font-size: 0.9rem; }
+
+  .chimp-photo {
+    margin-top: 2.5rem; width: 320px; max-width: 100%;
+    border-radius: 6px;
+    filter: saturate(0.8) contrast(1.05);
+    box-shadow: 0 4px 20px rgba(26,26,24,0.08);
+  }
+  .chimp-caption { margin-top: 0.5rem; font-size: 0.75rem; color: var(--warm-gray); font-style: italic; }
+
+  /* CONTACT */
+  .contact { padding: 5rem 0 6rem; text-align: center; border-top: 1px solid var(--rule); }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300; font-style: italic;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    margin-bottom: 1.5rem; line-height: 1.35;
+  }
+
+  .contact-email { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; }
+  .contact-email a { color: var(--orange); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+  .contact-email a:hover { border-bottom-color: var(--orange); }
+
+  .contact-buttons {
+    display: flex; gap: 1rem;
+    justify-content: center; align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    background: var(--orange);
+    color: var(--cream);
+    border: 2px solid var(--orange);
+  }
+
+  .contact-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
+  }
+
+  .contact-btn-outline {
+    background: transparent;
+    color: var(--ink-light);
+    border: 2px solid var(--rule);
+  }
+
+  .contact-btn-outline:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: transparent;
+  }
+
+  .contact-btn.revealed {
+    background: transparent;
+    border-color: transparent;
+    cursor: default;
+    padding: 0.75rem 0;
+  }
+
+  .contact-btn.revealed a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.15em;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid var(--orange);
+  }
+
+  .contact-btn.revealed:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+  .contact-sub { margin-top: 1.5rem; font-size: 0.85rem; color: var(--warm-gray); font-style: italic; }
+
+  /* STICKY HEADER */
+  .sticky-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 44px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .sticky-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .sticky-left {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .sticky-left a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .sticky-left .sticky-comma {
+    color: var(--orange);
+  }
+
+  .sticky-right a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .sticky-right a:hover {
+    color: var(--ink);
+  }
+
+  /* STORY ILLUSTRATIONS */
+  .story-illo {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+    width: 160px;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(26,26,24,0.08);
+  }
+
+  .story-illo.round { border-radius: 6px; }
+
+  .story-illo-link {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+    display: block;
+    width: 160px;
+  }
+
+  .story-illo-link img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(26,26,24,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .story-illo-link:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(26,26,24,0.15);
+  }
+
+  .story-clear { clear: both; }
+
+  @media (max-width: 600px) {
+    .story-illo, .story-illo-link { float: none; margin: 0 0 1rem 0; width: 140px; }
+  }
+
+  .footer { padding: 2rem; text-align: center; font-size: 0.7rem; color: var(--rule); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; }
+
+  .emoji-portfolio {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .emoji-portfolio a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+
+  .emoji-portfolio a:hover {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    html { font-size: 16px; }
+    .container { padding: 0 1.25rem; }
+    .marquee-track { gap: 1.5rem 2rem; }
+    .hero { min-height: 90vh; }
+    .hero-photo { width: 140px; height: 140px; }
+    .chimp-photo { width: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<div class="sticky-header" id="stickyHeader">
+  <div class="sticky-left"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Ineffable<span class="sticky-comma">,</span> Inc.</a></div>
+  <div class="sticky-right"><a href="mailto:hello@danielreiss.com">Say Hello</a></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-entity">Ineffable<span class="hero-comma">,</span> Inc.</p>
+  <img class="hero-photo" src="/images/yung-daniel.jpg" alt="Young Daniel Reiss in a suit">
+  <h1 class="hero-name">Daniel Reiss</h1>
+  <p class="hero-tagline">Effing the Ineffable Since 2001.</p>
+  <p class="hero-descriptor">Creative <span class="desc-x">×</span> Technology <span class="desc-x">×</span> Editorial <span class="desc-x">×</span> Strategy <span class="desc-x">×</span> Leadership <span class="desc-x">×</span> Mission</p>
+  <div class="hero-scroll">&#8964;</div>
+</section>
+
+<!-- LOGO MARQUEE -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-logo">Paramount</span>
+    <span class="marquee-logo">Disney</span>
+    <span class="marquee-logo">Universal</span>
+    <span class="marquee-logo">Amazon</span>
+    <span class="marquee-logo">Audible</span>
+    <span class="marquee-logo">Shutterstock</span>
+    <span class="marquee-logo">American Greetings</span>
+    <span class="marquee-logo">MasterClass</span>
+    <span class="marquee-logo">Outlier.org</span>
+    <span class="marquee-logo">GSV Ventures</span>
+    <span class="marquee-logo">Yale University</span>
+    <span class="marquee-logo">Robin Hood Foundation</span>
+    <span class="marquee-logo">charity: water</span>
+    <span class="marquee-logo" style="font-style: italic; opacity: 0.3;">and many more…</span>
+  </div>
+  <div class="award-strip">
+    <img src="/images/webby-logo.png" alt="Webby Award Winner" class="award-logo">
+    <img src="/images/digiday-logo.png" alt="Digiday Award Winner" class="award-logo">
+    <img src="/images/time-logo.png" alt="TIME Best Inventions 2020" class="award-logo tall">
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="stories">
+  <div class="container">
+
+    <!-- 1. STORY: Handmaid's Tale (big creative swing opener) -->
+    <div class="story fade-in">
+      <h2 class="story-headline">"Sure, this sounds like fun." — Margaret&nbsp;Atwood</h2>
+      <img class="story-illo" src="/images/handmaids-tale-cover.jpg" alt="The Handmaid's Tale Special Edition audiobook cover">
+      <p class="story-body">
+        We pitched an idea to Margaret Atwood because my colleague Emily and I wanted it as fans. <em>The Handmaid's Tale</em> ends with a fictional future academic conference — and "Are there any questions?" may be the most wonderfully frustrating last line ever conceived. What if we asked Atwood to actually answer some? She ran with it. I wrote the questions I'd always wanted answered; they were passed along through her people. I never met her. But my questions became part of the canonical text — and I ended up <a href="https://www.audible.com/pd/The-Handmaids-Tale-Special-Edition-Audiobook/B06XFW9YZ5" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">credited as a voice actor</a> alongside Claire Danes and Atwood herself. Wasn't my job, just a spare-time project that came to mega-fruition. The Washington Post called the result "highly pertinent, ingeniously conceived."
+      </p>
+      <div class="story-clear"></div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- 2. STORY: American Greetings (technologist origin story) -->
+    <div class="story fade-in">
+      <p class="story-label">American Greetings</p>
+      <h2 class="story-headline">Six years figuring out how everyone was going to say everything to each&nbsp;other.</h2>
+      <a class="story-illo-link" href="https://www.americangreetings.com/ecards/thinking-of-you/just-because-i-can-can-ecard/card-3150708" target="_blank" title="An ecard I wrote and produced — still live!">
+        <img src="/images/say-hi-ecard.jpg" alt="Say Hi ecard from American Greetings">
+      </a>
+      <p class="story-body">
+        Head editor of American Greetings' digital R&amp;D team during the exact years the world was figuring out how to communicate online. Not just birthdays and holidays — <em>all of it</em>. How do you celebrate on Facebook? What does a greeting card become on a phone? We had a big greenscreen digital content studio and a budget to build sets and puppets and hire adorable animal actors like Suzy the chimpanzee and <a href="https://www.americangreetings.com/ecards/christmas/christmas-dreams-come-true-ecard/card-3173936" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Uggie the dog from the Academy Award-winning film <em>The Artist</em></a>. We acquired libraries of animated GIFs before they were cool again (again), built tagged databases to make them searchable, and shipped justWink — the brand, the app (on millions of phones), the whole ecosystem. We were working through social media, mobile, instant messaging, emojis, and whatever came next, as society adopted them in real time. The work earned a U.S. patent, on which I'm listed as inventor. Taylor Swift used the tech. The job that took me from creative to technologist and taught me the medium really is the&nbsp;message.
+      </p>
+      <div class="story-clear"></div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- 3. STORY: Shutterstock (editorial scale) -->
+    <div class="story fade-in">
+      <p class="story-label">Shutterstock</p>
+      <h2 class="story-headline">Half a million readers a month and the engine of a global marketing strategy that's still&nbsp;running.</h2>
+      <div class="hbr-sidebar">
+        <blockquote class="hbr-blockquote">"A tour de force of art, design, and&nbsp;technology."</blockquote>
+        <img src="/images/hbr-logo.png" alt="Harvard Business Review" class="hbr-logo" style="margin-top: 0.75rem; margin-bottom: 0;">
+      </div>
+      <p class="story-body">
+        I founded Shutterstock's content marketing program from nothing and built it into an operation that reached half a million readers a month: 8 blogs, 7 languages, 57 social channels, a 15-person team, and an experimentation mindset that defined the golden age of branded content. We made <a href="https://www.shutterstock.com/blog/game-of-brands-tv-ads-for-a-modern-day-game-of-thrones" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">mega-viral content</a> and won a bunch of awards along the way. The program I built became the engine of their global marketing strategy — and still is,&nbsp;today.
+      </p>
+      <div class="story-clear"></div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- 4. STORY: Audible Range (editorial + tech combo) -->
+    <div class="story fade-in">
+      <p class="story-label">Audible</p>
+      <h2 class="story-headline">Built an award-winning magazine — and accidentally, a CMS that passed Amazon's security&nbsp;review.</h2>
+      <img class="story-illo round" src="/images/digiday-award-photo.jpg" alt="Daniel and the Audible team accepting the Digiday Award">
+      <p class="story-body">
+        As Director of Branded Content at Audible, I founded and ran <em>Audible Range</em>, their online magazine, sourcing and editing journalistic talent like <a href="https://www.audible.com/blog/roxane-gay-interviews-the-mothers-author-brit-bennett" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Roxane Gay</a>, <a href="https://www.audible.com/blog/and-the-award-for-best-line-delivery" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Leonard Maltin</a>, <a href="https://www.audible.com/blog/this-list-of-nick-offermans-favorite-audiobooks-is-not-to-be-trifled-with" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Nick Offerman</a>, and <a href="https://www.audible.com/blog/message-saved" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Jane C.&nbsp;Hu</a>. It won a Digiday Award for Best Brand Publication. Along the way, I built MTVessel, the content management system that powered it all — which turned out to meet Amazon's rigorous internal security standards and got adopted across the company. The medium is the message,&nbsp;indeed.
+      </p>
+      <div class="story-clear"></div>
+    </div>
+
+    <hr class="section-rule">
+
+    <!-- 5. STORY: Flywheel (compounding proof) -->
+    <div class="story fade-in">
+      <p class="story-label">MasterClass → Outlier → GSV Ventures → Yale</p>
+      <h2 class="story-headline">Build something. Get acquired. The investors hire you. Yale asks you to&nbsp;teach&nbsp;it.</h2>
+      <p class="story-body">
+        A former MasterClass colleague brought me to Outlier.org during the pandemic as <a href="https://www.youtube.com/watch?v=u_Yt1Km9XUk" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">Creative Director</a>. On the side, I built their content marketing and SEO program — 50K monthly organics in year one. Outlier won TIME's Best Inventions 2020. Then it was acquired; GSV Ventures liked the work enough to bring me in directly as a fractional creative director, leading their existing team and producing the ASU+GSV AIR Show — 15,000 people at the San Diego Convention Center, 125+ companies, one of the largest AI-in-education events in the world. That work led Yale University's Center for Emotional Intelligence to invite me to run a workshop on AI in creative&nbsp;production.
+      </p>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/isu_ZwEgMs8" allowfullscreen loading="lazy" title="ASU+GSV AIR Show"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MIC DROP -->
+<section class="micdrop fade-in">
+  <div class="container">
+    <p class="micdrop-label">Ask Me About My Work With</p>
+    <p class="micdrop-list">
+      <span class="name">Mean Girls</span><span class="sep">&middot;</span>
+      <span class="name">Monsoon Wedding</span><span class="sep">&middot;</span>
+      <span class="name">Zoolander</span><span class="sep">&middot;</span>
+      <span class="name">Uncharted</span><span class="sep">&middot;</span>
+      <span class="name">The Master of Disguise</span><span class="sep">&middot;</span>
+      <span class="name">Æon Flux</span><span class="sep">&middot;</span>
+      <span class="name">Ratchet &amp; Clank: Up Your Arsenal</span><span class="sep">&middot;</span>
+      <span class="name">Napoleon Dynamite</span><span class="sep">&middot;</span>
+      <span class="name">Beowulf</span><span class="sep">&middot;</span>
+      <span class="name">Hitman</span><span class="sep">&middot;</span>
+      <span class="name">Jane Goodall</span><span class="sep">&middot;</span>
+      <span class="name">Bill Nye</span><span class="sep">&middot;</span>
+      <span class="name">John Singleton</span><span class="sep">&middot;</span>
+      <span class="name">Terry Gilliam</span><span class="sep">&middot;</span>
+      <span class="name">David Axelrod</span><span class="sep">&middot;</span>
+      <span class="name">Dominique Ansel</span><span class="sep">&middot;</span>
+      <span class="name">Sly &amp; the Family Stone</span><span class="sep">&middot;</span>
+      <span class="name">Butterfinger</span><span class="sep">&middot;</span>
+      <span class="name">Astroglide</span><span class="sep">&middot;</span>
+      <span class="name">and a talking caribou</span>
+    </p>
+  </div>
+</section>
+
+<!-- IMPACT / CURRENT FOCUS -->
+<section class="human">
+  <div class="container">
+    <div class="fade-in">
+      <p class="human-label">My Current Focus</p>
+      <p class="human-body">
+        For the last decade or so, I've been specifically drawn to work that makes the world a little better — sustainability, farming, education, technology for social good. It's not a detour from the rest of my career. It's where the rest of my career was always&nbsp;headed.
+      </p>
+      <div class="human-list">
+        <span><span class="hl-place">Blue Ridge Labs @ Robin Hood Foundation</span> <span class="hl-note">— tech for social good fellow, 2017</span></span>
+        <span><span class="hl-note" style="padding-left: 0;">— pro-bono creative consultant, 2012–2019 (including naming <a href="https://www.justfix.org" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid var(--orange);">JustFix.nyc</a>, the housing rights org)</span></span>
+        <span><span class="hl-place">charity: water</span> <span class="hl-note">— content strategy, 2018</span></span>
+        <span><span class="hl-place">Adamah Farm</span> <span class="hl-note">— sustainable agriculture fellow, 2019</span></span>
+        <span><span class="hl-place">Windrose Farm</span> <span class="hl-note">— apprentice, 2019–2020</span></span>
+      </div>
+      <img class="chimp-photo" src="/images/chimp-photo.jpg" alt="Daniel with a chimpanzee">
+      <p class="chimp-caption">American Greetings era. For something I made called Monkeypiece Theatre. Long story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-in">
+  <div class="container">
+    <h2 class="contact-headline">I'd love to hear what you're working&nbsp;on.</h2>
+    <div class="contact-buttons">
+      <a class="contact-btn" href="mailto:hello@danielreiss.com">Say Hello</a>
+      <a class="contact-btn contact-btn-outline" href="https://www.linkedin.com/in/danieljonathanreiss" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="contact-sub">Ventura, California — open to remote, travel, and interesting&nbsp;problems.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="emoji-portfolio">
+    <a href="https://www.audible.com/blog/kittens-kisses-and-razorblades-behind-star-treks-iconic-sounds" target="_blank" title="Star Trek Sound Effects Soundboard — I built this">🖖</a>
+    <a href="https://nofilmschool.com/2014/12/style-5-famous-directors-replicated-using-only-stock-footage" target="_blank" title="Famous Directors tribute video — I did the Malick VO">🎬</a>
+    <a href="https://www.audible.com/blog/arts-culture/the-hip-hop-skit-is-dead-long-live-the-hip-hop-skit" target="_blank" title="The Hip-Hop Skit Is Dead. Long Live the Hip-Hop Skit.">🎤</a>
+    <a href="https://www.audible.com/blog/arts-culture/enduring-dystopias" target="_blank" title="Enduring Dystopias — Audible Range">📚</a>
+    <a href="https://www.audible.com/blog/science-technology/hear-what-scholars-think-english-will-sound-like-in-100-years" target="_blank" title="What English Will Sound Like in 100 Years">🗣️</a>
+    <a href="https://www.audible.com/blog/inside-audible/a-life-measured-in-stories" target="_blank" title="A Life Measured in Stories — Audible Range">❤️</a>
+    <a href="https://www.shutterstock.com/blog/game-of-brands-tv-ads-for-a-modern-day-game-of-thrones" target="_blank" title="Game of Brands — shared on HBO's own accounts">⚔️</a>
+    <a href="https://www.shutterstock.com/blog/infographic-shutterstocks-global-design-trends-2014" target="_blank" title="Global Design Trends Infographic — interactive, geo-localized">📊</a>
+    <a href="https://vimeo.com/122008450" target="_blank" title="Pixels of Fury — global design tournament series">🎮</a>
+    <a href="https://www.americangreetings.com/ecards/thinking-of-you/just-because-i-can-can-ecard/card-3150708" target="_blank" title="Say Hi ecard — still live after all these years">👋</a>
+    <a href="https://www.americangreetings.com/ecards/christmas/christmas-dreams-come-true-ecard/card-3173936" target="_blank" title="Uggie the dog Christmas ecard — from The Artist">🎄</a>
+    <a href="https://www.audible.com/blog/science-technology/message-saved" target="_blank" title="Message Saved — by Jane C. Hu">💌</a>
+  </div>
+  <div style="margin-top: 1rem;">
+    <span>&copy; 2026 Ineffable, Inc.</span>
+  </div>
+  <div style="margin-top: 1.25rem;">
+    <a href="/experiments/" style="text-decoration: none;"><img src="/images/under-construction.gif" alt="Under construction" style="width: 40px; opacity: 0.5; image-rendering: pixelated; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.5'"></a>
+    <p style="font-size: 0.5rem; margin-top: 0.4rem; color: var(--rule); letter-spacing: 0.1em;">Dubiously vibecoded. Management accepts no responsibility.</p>
+  </div>
+</footer>
+
+<script>
+  // Fade-in observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Sticky header — appears after hero scrolls out of view
+  const hero = document.querySelector('.hero');
+  const sticky = document.getElementById('stickyHeader');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        sticky.classList.remove('visible');
+      } else {
+        sticky.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.05 });
+  heroObserver.observe(hero);
+</script>
+
+</body>
+</html>

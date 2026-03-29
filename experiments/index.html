@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibecoding Experiments — Daniel Reiss</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:     #1a1208;
+    --cream:   #f2ead8;
+    --orange:  #c4511f;
+    --muted:   #7a6a50;
+    --rule:    #c8b99a;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* grain */
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:9999;
+  }
+
+  /* top bar */
+  .top-bar {
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    z-index: 2;
+    opacity:0; animation: riseIn 0.5s 0.1s ease forwards;
+  }
+
+  .logo {
+    font-family:'Bebas Neue', sans-serif;
+    font-size:1.2rem; letter-spacing:0.12em; color:var(--ink);
+    text-decoration:none;
+  }
+  .logo span { color:var(--orange); }
+
+  .back-link {
+    font-family:'DM Mono', monospace;
+    font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase;
+    color:var(--muted); text-decoration:none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color:var(--orange); }
+
+  /* main content */
+  main {
+    flex:1;
+    padding: 3rem 2.5rem 2rem;
+    position:relative; z-index:2;
+    max-width: 960px;
+    width: 100%;
+  }
+
+  .kicker {
+    font-family:'DM Mono', monospace;
+    font-size:0.6rem; letter-spacing:0.42em; text-transform:uppercase;
+    color:var(--orange); margin-bottom:1rem;
+    opacity:0; animation: riseIn 0.5s 0.2s ease forwards;
+  }
+
+  .page-title {
+    font-family:'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height:0.9; letter-spacing:0.01em;
+    opacity:0; animation: riseIn 0.6s 0.3s ease forwards;
+  }
+  .page-title .orange { color:var(--orange); }
+
+  .page-desc {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color:var(--muted); line-height:1.6;
+    margin-top:1.25rem; max-width:560px;
+    opacity:0; animation: riseIn 0.5s 0.45s ease forwards;
+  }
+
+  /* experiment grid */
+  .experiments {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+    opacity:0; animation: riseIn 0.5s 0.6s ease forwards;
+  }
+
+  .experiment-card {
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.25);
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .experiment-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+
+  .card-thumb {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .card-thumb-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  /* Shabbatogram-specific thumbnail style */
+  .thumb-shabbatogram {
+    background: linear-gradient(180deg, #000044 0%, #220044 40%, #000066 100%);
+    color: #ffd700;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 12px rgba(255,215,0,0.6);
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .thumb-shabbatogram .thumb-emoji {
+    font-size: 2.4rem;
+    filter: drop-shadow(0 0 8px rgba(255,150,50,0.5));
+  }
+  .thumb-shabbatogram .thumb-label {
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(135,206,235,0.5);
+  }
+
+  .card-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .card-number {
+    font-family:'DM Mono', monospace;
+    font-size:0.52rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--rule); margin-bottom:0.5rem;
+  }
+
+  .card-title {
+    font-family:'Bebas Neue', sans-serif;
+    font-size:1.4rem; letter-spacing:0.04em;
+    line-height:1.1;
+  }
+
+  .card-desc {
+    font-family:'Cormorant Garamond', serif;
+    font-size:1rem; line-height:1.5;
+    color:var(--muted); margin-top:0.5rem;
+  }
+
+  .card-tag {
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:0.5rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--orange);
+    border:1px solid var(--orange);
+    padding:0.3em 0.7em;
+    margin-top:0.85rem;
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    padding:1.25rem 2.5rem;
+    border-top:1px solid var(--rule);
+    display:flex; justify-content:space-between; align-items:center;
+    position:relative; z-index:2;
+    opacity:0; animation: riseIn 0.5s 0.75s ease forwards;
+  }
+
+  .bottom-left {
+    font-family:'DM Mono', monospace;
+    font-size:0.54rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--rule);
+  }
+
+  .bottom-right {
+    font-family:'DM Mono', monospace;
+    font-size:0.54rem; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  @keyframes riseIn {
+    from { opacity:0; transform:translateY(14px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width:600px) {
+    main { padding:2rem 1.5rem; }
+    .top-bar, .bottom-bar { padding:1.25rem 1.5rem; }
+    .experiments { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <a href="/" class="logo">Ineffable<span>,&nbsp;Inc.</span></a>
+  <a href="/" class="back-link">← Back to Home</a>
+</header>
+
+<main>
+  <p class="kicker">The Laboratory</p>
+
+  <h1 class="page-title">
+    Vibecoding <span class="orange">Experiments</span>
+  </h1>
+
+  <p class="page-desc">
+    A collection of small, weird, and wonderful things built for the fun of it — some useful, some not, all made with vibes.
+  </p>
+
+  <div class="experiments">
+
+    <a href="/shabbatograms/shabbatogram.html" class="experiment-card">
+      <div class="card-thumb">
+        <div class="card-thumb-inner thumb-shabbatogram">
+          <span class="thumb-emoji">🕯️✡️🕯️</span>
+          <span class="thumb-label">שבת שלום</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">No. 001</div>
+        <div class="card-title">Shabbatogram</div>
+        <p class="card-desc">A delightfully over-the-top Shabbat Shalom greeting card, channeling peak '90s web energy — rainbow borders, WordArt, and a visitor counter.</p>
+        <span class="card-tag">Greeting Card</span>
+      </div>
+    </a>
+
+    <!-- To add a new experiment, copy this template:
+    <a href="/path/to/experiment.html" class="experiment-card">
+      <div class="card-thumb">
+        <div class="card-thumb-inner" style="background:#eee;">
+          🧪
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number">No. 002</div>
+        <div class="card-title">Experiment Title</div>
+        <p class="card-desc">A short description of what this experiment is about.</p>
+        <span class="card-tag">Category</span>
+      </div>
+    </a>
+    -->
+
+  </div>
+</main>
+
+<footer class="bottom-bar">
+  <span class="bottom-left">Ineffable, Inc.</span>
+  <span class="bottom-right">Vibecoding since 2025</span>
+</footer>
+
+</body>
+</html>

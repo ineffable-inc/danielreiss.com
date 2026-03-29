@@ -1,0 +1,76 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+# NOTE: Since this is a static HTML site (no build step), Decap CMS will
+# let you edit content and commit changes to your Git repo. However, the
+# changes won't auto-render on the live site without a build step.
+#
+# TWO OPTIONS for making this fully editable:
+#
+# Option A (Recommended): Add Eleventy as a build step on Netlify.
+#   - Move content to markdown files (the /danielreiss/ project folder
+#     in the zip has this structure ready to go)
+#   - Set Netlify build command: npx @11ty/eleventy
+#   - Then CMS edits auto-build and deploy
+#
+# Option B (Quick & dirty): Use the CMS to track content in JSON/markdown,
+#   then manually update index.html to match. Still better than raw HTML
+#   because you have a nice editor for drafting copy.
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/home.json"
+        fields:
+          - { label: "Name", name: "name", widget: "string", default: "Daniel Reiss" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "Effing the Ineffable Since 2001." }
+          - { label: "Descriptor", name: "descriptor", widget: "string", default: "Creative leadership. Technology. Editorial strategy." }
+          - { label: "Hero Image", name: "heroImage", widget: "image", default: "/images/yung-daniel.jpg" }
+          - label: "Logos"
+            name: "logos"
+            widget: "list"
+            field: { label: "Name", name: "name", widget: "string" }
+          - label: "Awards"
+            name: "awards"
+            widget: "list"
+            field: { label: "Name", name: "name", widget: "string" }
+          - label: "Mic Drop Names"
+            name: "micdropNames"
+            widget: "list"
+            field: { label: "Name", name: "name", widget: "string" }
+          - { label: "Impact Intro", name: "impactIntro", widget: "text" }
+          - { label: "Contact Headline", name: "contactHeadline", widget: "string" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string" }
+          - { label: "Contact Subtext", name: "contactSub", widget: "string" }
+
+  - name: "stories"
+    label: "Stories"
+    label_singular: "Story"
+    folder: "content/stories"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Label", name: "label", widget: "string" }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "YouTube Embed URL", name: "videoEmbed", widget: "string", required: false }
+      - { label: "Second YouTube Embed", name: "videoEmbed2", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "impact"
+    label: "Impact Work"
+    label_singular: "Impact Item"
+    folder: "content/impact"
+    create: true
+    extension: "md"
+    fields:
+      - { label: "Place", name: "place", widget: "string" }
+      - { label: "Note", name: "note", widget: "string" }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int" }
